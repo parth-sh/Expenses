@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView items_list;
     TextView items_count;
 
-    ActivityResultLauncher<Intent> startAddActivityForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+    ActivityResultLauncher<Intent> startCreateEntryActivityForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         add_items.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startAddActivityForResult.launch(new Intent(MainActivity.this, CreateEntryActivity.class));
+                startCreateEntryActivityForResult.launch(new Intent(MainActivity.this, CreateEntryActivity.class));
             }
         });
     }
