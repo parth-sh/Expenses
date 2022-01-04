@@ -23,8 +23,9 @@ public class CustomListAdapter extends ListAdapter<Entry, CustomViewHolder> {
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         Entry current = this.getItem(position);
         holder.bind(
-                current.getName().toString(),
-                String.valueOf(current.getCost())
+                current.getId(),
+                current.getName(),
+                current.getCost()
         );
     }
 
