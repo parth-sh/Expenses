@@ -19,6 +19,8 @@ import com.example.expenses.rv_components.CustomListAdapter;
 import com.example.expenses.viewModel.EntryViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton add_items;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = result.getData();
                         String name = intent.getStringExtra(CreateEntryActivity.NAME);
                         String cost = intent.getStringExtra(CreateEntryActivity.COST);
-                        Entry entry = new Entry(name, Integer.parseInt(cost));
+                        Entry entry = new Entry(name, Integer.parseInt(cost), Calendar.getInstance().getTime());
                         entryViewModel.insert(entry);
                     }
                 }

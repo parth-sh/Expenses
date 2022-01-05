@@ -3,6 +3,9 @@ package com.example.expenses.data;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import java.util.Date;
 
 @Entity(tableName = "ledger")
 public class Entry {
@@ -10,15 +13,24 @@ public class Entry {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @NonNull
     private String name;
-
-    @NonNull
     private int cost;
 
-    public Entry(@NonNull String name, @NonNull int cost) {
+    @TypeConverters({DateConverter.class})
+    private Date created_at;
+
+    public Entry(String name, int cost, Date created_at) {
         this.name = name;
         this.cost = cost;
+        this.created_at = created_at;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -29,11 +41,7 @@ public class Entry {
         return cost;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Date getCreated_at() {
+        return this.created_at;
     }
 }
