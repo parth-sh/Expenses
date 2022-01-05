@@ -62,12 +62,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        customListAdapter = new CustomListAdapter(new CustomListAdapter.EntryDiff());
-        entries_list.setAdapter(customListAdapter);
-        entries_list.setLayoutManager(new LinearLayoutManager(this));
+        setUpRecyclerView();
 
         entryViewModel = new ViewModelProvider(this).get(EntryViewModel.class);
-
         entryViewModel.getEntriesCost().observe(this, cost -> {
             if (cost == null) {
                 cost = Integer.valueOf(0);
@@ -97,5 +94,11 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void setUpRecyclerView() {
+        entries_list.setLayoutManager(new LinearLayoutManager(this));
+        customListAdapter = new CustomListAdapter(new CustomListAdapter.EntryDiff());
+        entries_list.setAdapter(customListAdapter);
     }
 }
