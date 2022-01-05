@@ -32,7 +32,7 @@ public abstract class ExpensesRoomDatabase extends RoomDatabase {
                             ExpensesRoomDatabase.class,
                             "expenses.sqlite"
                     )
-                            .addCallback(sRoomDatabaseCallback)
+//                            .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
             }
@@ -40,22 +40,22 @@ public abstract class ExpensesRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-
-            // If you want to keep data through app restarts,
-            // comment out the following block
-            databaseWriteExecutor.execute(() -> {
-                // Populate the database in the background.
-                // If you want to start with more words, just add them.
-                LedgerDao dao = INSTANCE.ledgerDao();
-                dao.deleteAll();
-
-                Entry word = new Entry("Example", 0, Calendar.getInstance().getTime());
-                dao.insert(word);
-            });
-        }
-    };
+//    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+//        @Override
+//        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+//            super.onCreate(db);
+//
+//            // If you want to keep data through app restarts,
+//            // comment out the following block
+//            databaseWriteExecutor.execute(() -> {
+//                // Populate the database in the background.
+//                // If you want to start with more words, just add them.
+//                LedgerDao dao = INSTANCE.ledgerDao();
+//                dao.deleteAll();
+//
+//                Entry word = new Entry("Example", 0, Calendar.getInstance().getTime());
+//                dao.insert(word);
+//            });
+//        }
+//    };
 }
