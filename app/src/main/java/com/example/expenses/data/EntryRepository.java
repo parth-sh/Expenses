@@ -31,4 +31,10 @@ public class EntryRepository {
             ledgerDao.insert(entry);
         });
     }
+
+    public void deleteAll() {
+        ExpensesRoomDatabase.databaseWriteExecutor.execute(() -> {
+            ledgerDao.deleteAll();
+        });
+    }
 }

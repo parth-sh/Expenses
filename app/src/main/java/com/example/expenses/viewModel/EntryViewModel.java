@@ -35,4 +35,8 @@ public class EntryViewModel extends AndroidViewModel {
     public void insert(Entry entry) {
         entryRepository.insert(entry);
     }
+
+    public void deleteAll() {
+        entryRepository.deleteAll();
+    }
 }

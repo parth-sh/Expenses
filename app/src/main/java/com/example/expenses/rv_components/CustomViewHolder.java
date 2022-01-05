@@ -1,11 +1,13 @@
 package com.example.expenses.rv_components;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expenses.R;
@@ -17,6 +19,7 @@ import java.util.TimeZone;
 
 public class CustomViewHolder extends RecyclerView.ViewHolder {
 
+    private static Context context;
     private final TextView created_at, name, cost;
     private SimpleDateFormat simpleDateFormat;
 
@@ -33,10 +36,16 @@ public class CustomViewHolder extends RecyclerView.ViewHolder {
         this.name.setText(name);
         this.created_at.setText(this.simpleDateFormat.format(created_at));
         this.cost.setText("- ₹ "+cost);
+        if (cost > 1000) {
+            this.cost.setTextColor(ContextCompat.getColor(context,R.color.red_A200));
+        } else {
+            this.cost.setTextColor(ContextCompat.getColor(context,R.color.green_A200));
+        }
     }
 
     static CustomViewHolder create(ViewGroup parent) {
-        View view = LayoutInflater.from(parent.getContext())
+        context = parent.getContext();
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.recycler_view_item, parent, false);
         return new CustomViewHolder(view);
     }
