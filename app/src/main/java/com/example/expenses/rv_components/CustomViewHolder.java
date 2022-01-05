@@ -17,20 +17,22 @@ import java.util.TimeZone;
 
 public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-    private final TextView created_at, name;
+    private final TextView created_at, name, cost;
     private SimpleDateFormat simpleDateFormat;
 
     public CustomViewHolder(@NonNull View itemView) {
         super(itemView);
         this.name = itemView.findViewById(R.id.recycler_view_item_tv_entry_name);
+        this.cost = itemView.findViewById(R.id.recycler_view_item_tv_entry_cost);
         this.created_at = itemView.findViewById(R.id.recycler_view_item_tv_entry_created_at);
-        this.simpleDateFormat = new SimpleDateFormat("dd MMM, hh:mm a", Locale.US);
+        this.simpleDateFormat = new SimpleDateFormat("dd MMM, h:mm a", Locale.US);
         this.simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Calcutta"));
     }
 
     public void bind(int id, String name, int cost, Date created_at) {
         this.name.setText(name);
         this.created_at.setText(this.simpleDateFormat.format(created_at));
+        this.cost.setText("- ₹ "+cost);
     }
 
     static CustomViewHolder create(ViewGroup parent) {
