@@ -25,7 +25,8 @@ public class CustomListAdapter extends ListAdapter<Entry, CustomViewHolder> {
         holder.bind(
                 current.getId(),
                 current.getName(),
-                current.getCost()
+                current.getCost(),
+                current.getCreated_at()
         );
     }
 

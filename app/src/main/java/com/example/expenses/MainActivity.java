@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             if (cost == null) {
                 cost = Integer.valueOf(0);
             }
-            entries_count.setText(cost.toString());
+            entries_count.setText("₹ "+cost.toString());
         });
         entryViewModel.getEntriesList().observe(this, entryList -> {
             // Update the cached copy of entries in the adapter.
