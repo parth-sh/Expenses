@@ -47,6 +47,8 @@ https://stackoverflow.com/questions/50313525/room-using-date-field
 https://stackoverflow.com/questions/21349475/calendar-getinstancetimezone-gettimezoneutc-is-not-returning-utc-time
 
 https://stackoverflow.com/questions/18734452/display-current-time-in-12-hour-format-with-am-pm/18734531
+
 ### Multiple View Recycler view
 https://developer.android.com/guide/topics/ui/layout/recyclerview#java
 
+https://stackoverflow.com/questions/26245139/how-to-create-recyclerview-with-multiple-view-types

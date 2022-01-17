@@ -14,22 +14,28 @@ import java.util.List;
 public class EntryViewModel extends AndroidViewModel {
 
     private EntryRepository entryRepository;
-    private final LiveData<List<Entry>> entriesList;
-    private LiveData<Integer> entriesCost;
+    private final LiveData<List<Entry>> entriesListObserver;
+    private final List<Entry> initialEntriesList;
+    private LiveData<Integer> entriesCostObserver;
 
     public EntryViewModel(@NonNull Application application) {
         super(application);
         entryRepository = new EntryRepository(application);
-        entriesList = entryRepository.getEntriesList();
-        entriesCost = entryRepository.getEntriesCost();
+        entriesListObserver = entryRepository.getEntriesListObserver();
+        entriesCostObserver = entryRepository.getEntriesCostObserver();
+        initialEntriesList = entryRepository.getInitialEntriesList();
     }
 
-    public LiveData<List<Entry>> getEntriesList() {
-        return entriesList;
+    public LiveData<List<Entry>> getEntriesListObserver() {
+        return entriesListObserver;
     }
 
-    public LiveData<Integer> getEntriesCost() {
-        return entriesCost;
+    public List<Entry> getInitialEntriesList() {
+        return initialEntriesList;
+    }
+
+    public LiveData<Integer> getEntriesCostObserver() {
+        return entriesCostObserver;
     }
 
     public void insert(Entry entry) {

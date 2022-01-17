@@ -15,8 +15,11 @@ public interface LedgerDao {
     void deleteAll();
 
     @Query("SELECT SUM(cost) FROM ledger")
-    LiveData<Integer> getEntriesCost();
+    LiveData<Integer> getEntriesCostObserver();
 
-    @Query("SELECT * FROM ledger ORDER BY id ASC")
-    LiveData<List<Entry>> getEntriesList();
+    @Query("SELECT * FROM ledger ORDER BY id DESC")
+    LiveData<List<Entry>> getEntriesListObserver();
+
+    @Query("SELECT * FROM ledger ORDER BY id DESC")
+    List<Entry> getInitialEntriesList();
 }

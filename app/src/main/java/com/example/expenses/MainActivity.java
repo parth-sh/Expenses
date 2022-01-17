@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.expenses.data.Entry;
-import com.example.expenses.rv_components.CustomListAdapter;
+import com.example.expenses.rv_components.CustomAdapter;
 import com.example.expenses.viewModel.EntryViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton add_items;
     RecyclerView entries_list;
     TextView entries_count;
-    CustomListAdapter customListAdapter;
+    CustomAdapter adapter;
     EntryViewModel entryViewModel;
 
     ActivityResultLauncher<Intent> startCreateEntryActivityForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -62,18 +62,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setUpRecyclerView();
-
         entryViewModel = new ViewModelProvider(this).get(EntryViewModel.class);
-        entryViewModel.getEntriesCost().observe(this, cost -> {
+
+        setUpRecyclerView();
+        entryViewModel.getEntriesCostObserver().observe(this, cost -> {
             if (cost == null) {
                 cost = Integer.valueOf(0);
             }
             entries_count.setText("₹ "+cost);
         });
-        entryViewModel.getEntriesList().observe(this, entryList -> {
+        entryViewModel.getEntriesListObserver().observe(this, entryList -> {
             // Update the cached copy of entries in the adapter.
-            customListAdapter.submitList(entryList);
+            adapter = new CustomAdapter(entryList);
         });
     }
 
@@ -98,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpRecyclerView() {
         entries_list.setLayoutManager(new LinearLayoutManager(this));
-        customListAdapter = new CustomListAdapter(new CustomListAdapter.EntryDiff());
-        entries_list.setAdapter(customListAdapter);
+        //TODO: Move adapter initialisation to a different thread
+        adapter = new CustomAdapter(entryViewModel.getInitialEntriesList());
+        entries_list.setAdapter(adapter);
     }
 }
