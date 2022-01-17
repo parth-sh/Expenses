@@ -33,22 +33,20 @@ GalleryView - gv
 LinearLayout -ll
 RelativeLayout - rl
 ```
-
+# Dependencies
+https://developer.android.com/jetpack/androidx/releases/room
 
 # References
-
 ### Room database
 https://developer.android.com/codelabs/android-room-with-a-view?hl=en#0
-
 ### DateConverter for date column in room db
 https://youtu.be/hjv4xRgN24M
 
 https://stackoverflow.com/questions/50313525/room-using-date-field
-
 ### Date formatting
 https://stackoverflow.com/questions/21349475/calendar-getinstancetimezone-gettimezoneutc-is-not-returning-utc-time
 
 https://stackoverflow.com/questions/18734452/display-current-time-in-12-hour-format-with-am-pm/18734531
+### Multiple View Recycler view
+https://developer.android.com/guide/topics/ui/layout/recyclerview#java
 
-# Dependencies
-https://developer.android.com/jetpack/androidx/releases/room
