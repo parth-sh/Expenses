@@ -38,15 +38,17 @@ RelativeLayout - rl
 # References
 
 ### Room database
-<br>https://developer.android.com/codelabs/android-room-with-a-view?hl=en#0
+https://developer.android.com/codelabs/android-room-with-a-view?hl=en#0
 
 ### DateConverter for date column in room db
-<br>https://youtu.be/hjv4xRgN24M
-<br>https://stackoverflow.com/questions/50313525/room-using-date-field
+https://youtu.be/hjv4xRgN24M
+
+https://stackoverflow.com/questions/50313525/room-using-date-field
 
 ### Date formatting
-<br>https://stackoverflow.com/questions/21349475/calendar-getinstancetimezone-gettimezoneutc-is-not-returning-utc-time
-<br>https://stackoverflow.com/questions/18734452/display-current-time-in-12-hour-format-with-am-pm/18734531
+https://stackoverflow.com/questions/21349475/calendar-getinstancetimezone-gettimezoneutc-is-not-returning-utc-time
+
+https://stackoverflow.com/questions/18734452/display-current-time-in-12-hour-format-with-am-pm/18734531
 
 # Dependencies
 https://developer.android.com/jetpack/androidx/releases/room
