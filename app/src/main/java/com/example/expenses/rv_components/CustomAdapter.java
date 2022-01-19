@@ -28,7 +28,6 @@ public class CustomAdapter extends ListAdapter<Entry, RecyclerView.ViewHolder> {
      * (custom ViewHolder).
      */
     public static class EntryViewHolder extends RecyclerView.ViewHolder {
-        public static int month = 0;
         //TODO: Remove use of context cause of potential memory leak
         private static Context context;
         private final TextView month_banner,created_at, name, cost;
@@ -46,12 +45,8 @@ public class CustomAdapter extends ListAdapter<Entry, RecyclerView.ViewHolder> {
             this.monthBannerDateFormat = new SimpleDateFormat("MMMM yyy", Locale.US);
         }
 
-        public void bind(int id, String name, int cost, Date created_at, boolean show_banner) {
-            if (show_banner) {
-                this.month_banner.setText(this.monthBannerDateFormat.format(created_at));
-            } else {
-                this.month_banner.setVisibility(View.GONE);
-            }
+        public void bind(int id, String name, int cost, Date created_at) {
+            this.month_banner.setText(this.monthBannerDateFormat.format(created_at));
             this.name.setText(name);
             this.created_at.setText(this.simpleDateFormat.format(created_at));
             this.cost.setText("- ₹ "+cost);
@@ -102,8 +97,7 @@ public class CustomAdapter extends ListAdapter<Entry, RecyclerView.ViewHolder> {
                 current.getId(),
                 current.getName(),
                 current.getCost(),
-                current.getCreated_at(),
-                true
+                current.getCreated_at()
         );
     }
 }
