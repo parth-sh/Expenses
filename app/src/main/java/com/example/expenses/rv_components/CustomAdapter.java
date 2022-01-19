@@ -28,13 +28,14 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder0 extends RecyclerView.ViewHolder {
+    public static class EntryViewHolder extends RecyclerView.ViewHolder {
+        //TODO: Remove use of context cause of potential memory leak
         private static Context context;
         private final TextView created_at, name, cost;
         private SimpleDateFormat simpleDateFormat;
 
-        public ViewHolder0(View view) {
-            super(view);
+        public EntryViewHolder(@NonNull View itemView) {
+            super(itemView);
             this.name = itemView.findViewById(R.id.recycler_view_item_tv_entry_name);
             this.cost = itemView.findViewById(R.id.recycler_view_item_tv_entry_cost);
             this.created_at = itemView.findViewById(R.id.recycler_view_item_tv_entry_created_at);
@@ -53,11 +54,11 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             }
         }
 
-        static ViewHolder0 create(ViewGroup parent) {
+        static EntryViewHolder create(ViewGroup parent) {
             context = parent.getContext();
             View view = LayoutInflater.from(context)
                     .inflate(R.layout.recycler_view_item, parent, false);
-            return new ViewHolder0(view);
+            return new EntryViewHolder(view);
         }
     }
 
@@ -69,16 +70,14 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("DEBUGGING", "ViewHolder0 created");
-        return ViewHolder0.create(parent);
+        return EntryViewHolder.create(parent);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Log.d("DEBUGGING", "ViewHolder0 binding");
         Entry current = this.localDataSet.get(position);
-        ((ViewHolder0) holder).bind(
+        ((EntryViewHolder) holder).bind(
                 current.getId(),
                 current.getName(),
                 current.getCost(),
@@ -89,6 +88,6 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.toArray().length;
+        return localDataSet.size();
     }
 }
