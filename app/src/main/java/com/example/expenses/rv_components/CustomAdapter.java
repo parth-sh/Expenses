@@ -1,7 +1,6 @@
 package com.example.expenses.rv_components;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import com.example.expenses.data.Entry;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class CustomAdapter extends ListAdapter<Entry, RecyclerView.ViewHolder> {
@@ -30,30 +28,25 @@ public class CustomAdapter extends ListAdapter<Entry, RecyclerView.ViewHolder> {
     public static class EntryViewHolder extends RecyclerView.ViewHolder {
         //TODO: Remove use of context cause of potential memory leak
         private static Context context;
-        private final TextView month_banner,created_at, name, cost;
-        private final SimpleDateFormat simpleDateFormat, monthBannerDateFormat;
+        private final TextView created_at, name, cost;
+        private final SimpleDateFormat simpleDateFormat;
 
         public EntryViewHolder(@NonNull View itemView) {
             super(itemView);
-
             this.name = itemView.findViewById(R.id.recycler_view_item_tv_entry_name);
             this.cost = itemView.findViewById(R.id.recycler_view_item_tv_entry_cost);
             this.created_at = itemView.findViewById(R.id.recycler_view_item_tv_entry_created_at);
-            this.month_banner = itemView.findViewById(R.id.recycler_view_item_tv_month_banner);
-
             this.simpleDateFormat = new SimpleDateFormat("dd MMM, h:mm a", Locale.US);
-            this.monthBannerDateFormat = new SimpleDateFormat("MMMM yyy", Locale.US);
         }
 
         public void bind(int id, String name, int cost, Date created_at) {
-            this.month_banner.setText(this.monthBannerDateFormat.format(created_at));
             this.name.setText(name);
             this.created_at.setText(this.simpleDateFormat.format(created_at));
-            this.cost.setText("- ₹ "+cost);
+            this.cost.setText("- ₹ " + cost);
             if (cost > 1000) {
-                this.cost.setTextColor(ContextCompat.getColor(context,R.color.red_A200));
+                this.cost.setTextColor(ContextCompat.getColor(context, R.color.red_A200));
             } else {
-                this.cost.setTextColor(ContextCompat.getColor(context,R.color.green_A200));
+                this.cost.setTextColor(ContextCompat.getColor(context, R.color.green_A200));
             }
         }
 
