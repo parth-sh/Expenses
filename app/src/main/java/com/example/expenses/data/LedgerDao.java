@@ -20,6 +20,6 @@ public interface LedgerDao {
     @Query("SELECT * FROM ledger ORDER BY id DESC")
     LiveData<List<Entry>> getEntriesListObserver();
 
-    @Query("SELECT * FROM ledger ORDER BY id DESC")
-    List<Entry> getInitialEntriesList();
+//    @Query("SELECT * FROM ledger ORDER BY id DESC")
+//    List<Entry> getInitialEntriesList();
 }

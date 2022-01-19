@@ -15,7 +15,7 @@ public class EntryViewModel extends AndroidViewModel {
 
     private EntryRepository entryRepository;
     private final LiveData<List<Entry>> entriesListObserver;
-    private final List<Entry> initialEntriesList;
+//    private final List<Entry> initialEntriesList;
     private LiveData<Integer> entriesCostObserver;
 
     public EntryViewModel(@NonNull Application application) {
@@ -23,16 +23,16 @@ public class EntryViewModel extends AndroidViewModel {
         entryRepository = new EntryRepository(application);
         entriesListObserver = entryRepository.getEntriesListObserver();
         entriesCostObserver = entryRepository.getEntriesCostObserver();
-        initialEntriesList = entryRepository.getInitialEntriesList();
+//        initialEntriesList = entryRepository.getInitialEntriesList();
     }
 
     public LiveData<List<Entry>> getEntriesListObserver() {
         return entriesListObserver;
     }
 
-    public List<Entry> getInitialEntriesList() {
-        return initialEntriesList;
-    }
+//    public List<Entry> getInitialEntriesList() {
+//        return initialEntriesList;
+//    }
 
     public LiveData<Integer> getEntriesCostObserver() {
         return entriesCostObserver;

@@ -32,8 +32,6 @@ public abstract class ExpensesRoomDatabase extends RoomDatabase {
                             ExpensesRoomDatabase.class,
                             "expenses.sqlite"
                     )
-                            //TODO:Remove allowMainThreadQueries and implement the needful.
-                            .allowMainThreadQueries()
                             //.addCallback(sRoomDatabaseCallback)
                             .build();
                 }

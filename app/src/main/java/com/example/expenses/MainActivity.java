@@ -62,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        entryViewModel = new ViewModelProvider(this).get(EntryViewModel.class);
 
         setUpRecyclerView();
+
+        entryViewModel = new ViewModelProvider(this).get(EntryViewModel.class);
         entryViewModel.getEntriesCostObserver().observe(this, cost -> {
             if (cost == null) {
                 cost = Integer.valueOf(0);
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
         entryViewModel.getEntriesListObserver().observe(this, entryList -> {
             // Update the cached copy of entries in the adapter.
-            adapter = new CustomAdapter(entryList);
+            adapter.submitList(entryList);
         });
     }
 
@@ -97,9 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        entries_list.setLayoutManager(new LinearLayoutManager(this));
-        //TODO: Move adapter initialisation to a different thread
-        adapter = new CustomAdapter(entryViewModel.getInitialEntriesList());
+        adapter = new CustomAdapter(new CustomAdapter.EntryDiff());
         entries_list.setAdapter(adapter);
+        entries_list.setLayoutManager(new LinearLayoutManager(this));
     }
 }

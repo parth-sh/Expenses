@@ -1,77 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="88dp"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/recycler_view_item_tv_month_banner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="250dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/gray_300"
-        app:strokeWidth="1dp">
-
-        <ImageView
-            android:id="@+id/recycler_view_item_iv_entry_image"
-            android:layout_width="56dp"
-            android:layout_height="56dp" />
-    </com.google.android.material.card.MaterialCardView>
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@color/BlueGrey_50"
+        android:textStyle="bold"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:text="TextView" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:minHeight="88dp"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.card.MaterialCardView
+            app:cardCornerRadius="250dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/gray_300"
+            app:strokeWidth="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp">
+
+            <ImageView
+                android:id="@+id/recycler_view_item_iv_entry_image"
+                android:layout_width="56dp"
+                android:layout_height="56dp" />
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/recycler_view_item_tv_entry_name"
-                    style="@style/entry_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/recycler_view_item_tv_entry_created_at"
-                    style="@style/entry_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="@color/gray_500" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/recycler_view_item_tv_entry_name"
+                        style="@style/entry_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/recycler_view_item_tv_entry_created_at"
+                        style="@style/entry_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/gray_500" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recycler_view_item_tv_entry_cost"
+                    style="@style/entry_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="-₹ 100" />
+
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/recycler_view_item_tv_entry_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                style="@style/entry_cost"
-                android:text="-₹ 100" />
-
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_300" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_300" />
     </LinearLayout>
 
 </LinearLayout>

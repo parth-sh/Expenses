@@ -9,7 +9,7 @@ import java.util.List;
 public class EntryRepository {
     private LedgerDao ledgerDao;
     private LiveData<List<Entry>> entriesListObserver;
-    private List<Entry> initialEntriesList;
+//    private List<Entry> initialEntriesList;
     private LiveData<Integer> entriesCostObserver;
 
     public EntryRepository(Application application) {
@@ -17,7 +17,7 @@ public class EntryRepository {
         ledgerDao = db.ledgerDao();
         entriesListObserver = ledgerDao.getEntriesListObserver();
         entriesCostObserver = ledgerDao.getEntriesCostObserver();
-        initialEntriesList = ledgerDao.getInitialEntriesList();
+//        initialEntriesList = ledgerDao.getInitialEntriesList();
     }
 
     public LiveData<List<Entry>> getEntriesListObserver() {
@@ -28,9 +28,9 @@ public class EntryRepository {
         return entriesCostObserver;
     }
 
-    public List<Entry> getInitialEntriesList() {
-        return initialEntriesList;
-    }
+//    public List<Entry> getInitialEntriesList() {
+//        return initialEntriesList;
+//    }
 
     public void insert(Entry entry) {
         ExpensesRoomDatabase.databaseWriteExecutor.execute(() -> {
